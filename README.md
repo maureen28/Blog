@@ -1,7 +1,6 @@
 # LIFE BLOG
 
 ## Description
-
 This is a Flask application where you can create and share your opinions and other users can read and comment on them as well as display random quotes to inspire your users.
 
 ## By: Maureen Wairimu
