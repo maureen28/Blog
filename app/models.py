@@ -69,8 +69,7 @@ class Comment(db.Model):
     def get_comments(cls,id):
         comments = Comment.query.filter_by(post_id = id).all()
         return comments        
-
-
+    
     @property
     def password(self):
         raise AttributeError("You cannot read the password attribute")

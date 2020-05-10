@@ -2,7 +2,7 @@ import os
 
 class Config:
     SECRET_KEY = '9b853ac7476300b6f1366b733a4e584f'
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///site.db'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///blog.db'
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
