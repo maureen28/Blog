@@ -51,3 +51,48 @@ source virtual/bin/activate
 <li>Flask Framework</li>
 <li>PostgreSQL</li>
 </ol>
+
+
+## Behavior Driven Deveopment
+<table>
+<tr>
+<th>Behaviour</th>
+<th>Input</th>
+<th>Output</th>
+</tr>
+<tr>
+<td><strong>User login</strong></td>
+<td>User enters email address and password</td>
+<td>User is logged into the system</td>
+</tr>
+<tr>
+<td><strong>Register as a new user</strong></td>
+<td>A form containing username, email, password and confirm password </td>
+<td>User is registered</td>
+</tr>
+<tr>
+<td><strong>Adds a new pitch</strong></td>
+<td>A form containing input fields for heading, pitch text and comment</td>
+<td>New pitch is added.</td>
+</tr>
+</table>
+
+### Known Bugs
+If you find a bug please feel free to alert me.
+To fix the bug:
+<ul list-style-type=circle;>
+<li>Fork the repository</li>
+<li>Create a new branch(git branch my-contribution)</li>
+<li>Make the changes, then (git add) to add changes</li>
+<li>Commit the changes you have made(git commit -m"Fix bug") </li>
+<li>Push changes made and click pull request so that I can access the changes made.</li>
+</ul>
+
+## Contact Information
+
+To get in touch E-MAIL me on nimz69509@gmail.com
+
+## License
+
+MIT License
+<b>Copyright (c) 2020 maureen28<b>
