@@ -41,3 +41,13 @@ source virtual/bin/activate
 <li>Run <code>python3 manage.py server</code></li>
 <li>Run test at <code>python3 manage.py test</code></li>
 </ol>
+
+
+## Technology & Dependency
+<ol>
+<li>python3.6</li>
+<li>Pip & pyperclip</li>
+<li>CSS(Bootstrap, FontAwesome)</li>
+<li>Flask Framework</li>
+<li>PostgreSQL</li>
+</ol>
