@@ -61,7 +61,7 @@ def delete_post(post_id):
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('main.home'))
 
-@main.route('/post/<int:id>/<int:comment_id>/delete')
+@posts.route('/post/<int:id>/<int:comment_id>/delete')
 def delete_comment(id, comment_id):
     post = Post.query.filter_by(id = id).first()
     comment = Comment.query.filter_by(id = comment_id).first()
@@ -69,7 +69,7 @@ def delete_comment(id, comment_id):
     db.session.commit()
     return redirect(url_for('main.home', id = post.id))
 
-@main.route('/post/<int:id>/<int:comment_id>/favourite')
+@posts.route('/post/<int:id>/<int:comment_id>/favourite')
 def fav_comment(id, comment_id):
     post = Post.query.filter_by(id = id).first()
     comment = Comment.query.filter_by(id = comment_id).first()
@@ -78,7 +78,7 @@ def fav_comment(id, comment_id):
     db.session.commit()
     return redirect(url_for('main.home', id = post.id))
 
-@main.route('/post/<int:id>/update', methods = ['POST', 'GET'])
+@posts.route('/post/<int:id>/update', methods = ['POST', 'GET'])
 @login_required
 def edit_post(id):
     post = Post.query.filter_by(id = id).first()
