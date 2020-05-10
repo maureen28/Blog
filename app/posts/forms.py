@@ -8,6 +8,12 @@ class PostForm(FlaskForm):
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Post')
 
+class UpdatePostForm(FlaskForm):
+    title = StringField("Blog title", validators=[Required()])
+    post = TextAreaField("Type Away", validators=[Required()])
+    submit = SubmitField("Update")
+
 class CommentForm(FlaskForm):
-    comment = TextAreaField('Leave Your Comment Here')
-    submit = SubmitField('Submit')
+    comment = TextAreaField("Post Comment", validators=[Required()])
+    alias = StringField("Comment Alias")
+    submit = SubmitField("Comment")

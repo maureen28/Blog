@@ -46,19 +46,84 @@ class Post(db.Model):
         return f'Post("{self.title}","{self.date_posted}")'
 
 class Comment(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    comment = db.Column(db.Text, nullable=False)
-    posted_date = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
-    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    __tablename__ = "comments"
+
+    id = db.Column(db.Integer, primary_key = True)
+    comment = db.Column(db.String)
+    comment_at = db.Column(db.DateTime)
+    comment_by = db.Column(db.String)
+    like_count = db.Column(db.Integer, default = 0)
+    post_id = db.Column(db.Integer, db.ForeignKey("posts.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
     def save_comment(self):
         db.session.add(self)
         db.session.commit()
 
     @classmethod
-    def get_comment(cls,id):
-        comments = Comment.query.filter_by(post_id=id).all()
-        return comments
-      
+    def delete_comment(cls, id):
+        gone = Comment.query.filter_by(id = id).first()
+        db.session.delete(gone)
+        db.session.commit()
+
+    @classmethod
+    def get_comments(cls,id):
+        comments = Comment.query.filter_by(post_id = id).all()
+        return comments        
+
+
+    @property
+    def password(self):
+        raise AttributeError("You cannot read the password attribute")
+
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+    # User like logic
+    def like_post(self, post):
+        if not self.has_liked_post(post):
+            like = PostLike(user_id = self.id, post_id = post.id)
+            db.session.add(like)
+
+    # User dislike logic
+    def unlike_post(self, post):
+        if self.has_liked_post(post):
+            PostLike.query.filter_by(
+                user_id = self.id,
+                post_id = post.id).delete()
+
+    # Check if user has liked post
+    def has_liked_post(self, post):
+        return PostLike.query.filter(
+            PostLike.user_id == self.id,
+            PostLike.post_id == post.id).count() > 0
+
     def __repr__(self):
-        return f"Comment('{self.comment}', '{self.posted_date}')"
+        return f"User {self.username}"
+
+
+class Subscribers(db.Model):
+    __tablename__ = "subscribers"
+    id = db.Column(db.Integer, primary_key = True)
+    email = db.Column(db.String(255), unique = True, index = True)
+
+
+class PostLike(db.Model):
+    __tablename__ = "post_like"
+    id = db.Column(db.Integer, primary_key = True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    post_id = db.Column(db.Integer, db.ForeignKey("posts.id"))
+
+
+class Quote:
+    """
+    Blueprint class for quotes consumed from API
+    """
+    def __init__(self, author, quote):
+        self.author = author
+        self.quote = quote
+        
