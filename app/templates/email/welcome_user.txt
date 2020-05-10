@@ -1,0 +1,3 @@
+Hello {{user.username}}
+A huge welcome to you for joining pitch.
+Maureen Nimo
