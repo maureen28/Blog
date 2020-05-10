@@ -1,3 +1,2 @@
-Hello, a new blog post by  has been made, head over to the blog to view it.
-
+Hey my blog family. I'm so excited to announce that a new blog post  has just been uploaded.
 {{user_fname}} {{user_lname}}.
