@@ -6,8 +6,6 @@ from flask_mail import Mail
 from .config import Config
 from flask_bootstrap import Bootstrap
 
-
-
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 bcrypt = Bcrypt()

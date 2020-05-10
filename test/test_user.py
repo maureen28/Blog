@@ -16,7 +16,7 @@ class TestUser(unittest.TestCase):
             self.new_user.password
     
     def test_password_verification(self):
-        self.assertTrue(self.new_user.check_password_hash('alcohol'))
+        self.assertTrue(self.new_user.verify_password('alcohol'))
    
 class TestPost(unittest.TestCase):
     

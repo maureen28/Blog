@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable = False, default = 'default.jpeg' )
     password = db.Column(db.String(60), nullable = False )
     posts = db.relationship('Post', backref = 'author', lazy = True)
+   
   
     def get_reset_token(self, expires_sec=1800):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
@@ -39,7 +40,6 @@ class Post(db.Model):
     date_posted = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
     content = db.Column(db.Text, nullable =False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
-    category = db.Column(db.Text, nullable=False)
     comments = db.relationship('Comment', backref='post', lazy=True)
     
     def __repr__(self):
@@ -53,8 +53,7 @@ class Comment(db.Model):
     comment_at = db.Column(db.DateTime)
     comment_by = db.Column(db.String)
     like_count = db.Column(db.Integer, default = 0)
-    post_id = db.Column(db.Integer, db.ForeignKey("posts.id"))
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
 
     def save_comment(self):
         db.session.add(self)
