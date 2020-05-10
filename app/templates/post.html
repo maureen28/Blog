@@ -24,7 +24,6 @@
             <p class="article-content">{{ post.content }}</p>
         </div>
 </div>
-<p>{% include 'like.html'%}</p>
 </article>
 <div class="content-section">
     <a class="ratings" href="{{ url_for('posts.new_comment', post_id=post.id) }}"> Leave a comment</a>
