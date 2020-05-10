@@ -4,6 +4,9 @@ from flask_login import current_user, login_required
 from app import db
 from app.models import Post, Comment
 from app.posts.forms import PostForm, CommentForm, UpdatePostForm
+from ..email import welcome_message, notification_message
+from ..requests import get_quote
+
 
 posts = Blueprint('posts', __name__)
 

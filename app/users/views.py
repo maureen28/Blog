@@ -5,7 +5,6 @@ from app import db, bcrypt
 from app.models import User, Post, Comment
 from app.users.forms import RegistrationForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm
 from app.users.utils import save_picture, send_reset_email
-from ..email import mail_message
 
 users = Blueprint('users', __name__)
 
@@ -59,6 +58,9 @@ def account():
         current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
+        welcome_message("Thank you for subscribing to our Life blog", 
+                        "email/welcome", current_user.email)
+
         flash('Your account has been updated!','success')
         return redirect(url_for('users.account'))
     elif request.method == 'GET':
