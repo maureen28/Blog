@@ -15,7 +15,7 @@ def new_post():
         post = Post(title=form.title.data, content=form.content.data , author=current_user)
         db.session.add(post)
         db.session.commit()
-        flash('Your post has been created!', 'success')
+        flash('Your blog post has been created!', 'success')
         return redirect(url_for('main.home'))
     return render_template('pitch.html', title='New Blog Post',form=form, legend='New Blog Post')
 
@@ -37,7 +37,7 @@ def update_post(post_id):
         post.title = form.title.data
         post.content = form.content.data
         db.session.commit()
-        flash('Your pitch post has been updated successfully!', 'success')
+        flash('Your blog post has been updated successfully!', 'success')
         return redirect(url_for('posts.post', post_id=post.id))
     elif request.method == 'GET':
         form.title.data = post.title

@@ -22,7 +22,11 @@ This is a Flask application where you can create and share your opinions and oth
 
 <ul>
 <li>Below is the landing page once the web browser is loaded</li>
-<img src="/home.jpg" alt="Pitch landing page" width="1000"/>
+<img src="/landing.jpg" alt="Blog Post Home page" width="1000"/>
+<li>Below is the blog page where the user can update or delete a post as well as delete and leave a comment</li>
+<img src="/delete.jpg" alt="Post" width="800"/>
+<li>Below is the about page.It outputs random quotes that are powered by Quote random json API</li>
+<img src="/random.jpg" alt="Random quotes page" width="800"/>
 </ul>
 
 ### Live link :
