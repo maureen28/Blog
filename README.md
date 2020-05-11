@@ -29,7 +29,7 @@ This is a Flask application where you can create and share your opinions and oth
 <img src="/random.jpg" alt="Random quotes page" width="800"/>
 </ul>
 
-### Live link :
+### Live link : https://lifeblogm.herokuapp.com/
 
 ## Setup Instructions
 
