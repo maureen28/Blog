@@ -19,7 +19,6 @@ def new_post():
         return redirect(url_for('main.home'))
     return render_template('pitch.html', title='New Blog Post',form=form, legend='New Blog Post')
 
-
 @posts.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
@@ -71,10 +70,14 @@ def new_comment(post_id):
         return redirect(url_for('posts.post', post_id=post.id))
     return render_template('comment.html', title='Comment Here', form=form, legend='Comment Here')
 
-@posts.route("/post/<int:id>/<int:comment_id>/delete")
-def delete_comment(id, comment_id):
-    post = Post.query.filter_by(id = id).first()
-    comment = Comment.query.filter_by(id = comment_id).first()
+@posts.route("/post/<int:post_id>/comment/delete")
+@login_required
+def delete_comment(post_id):
+    post = Post.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
     db.session.delete(comment)
     db.session.commit()
-    return redirect(url_for("main.home", id = post.id))
+    flash('Your comment has been deleted!', 'success')
+    return redirect(url_for('main.home'))
+    

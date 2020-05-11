@@ -3,55 +3,68 @@
 {% block content %}
 <br>
 <div class="container">
-<div class="content-section">
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Log In</legend>
-            <div class="form-group">
-                {{ form.email.label(class="form-control-label") }}
-                {% if form.email.errors %}
+    <div class="content-section">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Log In</legend>
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {% if form.email.errors %}
                     {{ form.email(class="form-control form-control-lg is-invalid") }}
                     <div class="invalid-feedback">
                         {% for error in form.email.errors %}
-                            <span>{{ error }}</span>
+                        <span>{{ error }}</span>
                         {% endfor %}
                     </div>
-                {% else %}
+                    {% else %}
                     {{ form.email(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.password.label(class="form-control-label") }}
-                {% if form.password.errors %}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    {% if form.password.errors %}
                     {{ form.password(class="form-control form-control-lg is-invalid") }}
                     <div class="invalid-feedback">
                         {% for error in form.password.errors %}
-                            <span>{{ error }}</span>
+                        <span>{{ error }}</span>
                         {% endfor %}
                     </div>
-                {% else %}
+                    {% else %}
                     {{ form.password(class="form-control form-control-lg") }}
-                {% endif %}
+                    {% endif %}
+                </div>
+                <div class="form-check">
+                    {{ form.remember(class="form-check-input") }}
+                    {{ form.remember.label(class="form-check-label") }}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+                <small class="text-muted ml-2">
+                    Forgotten your login details? <a href="{{ url_for('users.reset_request') }}"> Get help with signing
+                        in. </a>
+                </small>
             </div>
-            <div class="form-check">
-                {{ form.remember(class="form-check-input") }}
-                {{ form.remember.label(class="form-check-label") }}
-            </div>
-        </fieldset>
-        <div class="form-group">
-            {{ form.submit(class="btn btn-outline-info") }}
-            <small class="text-muted ml-2">
-                Forgotten your login details? <a href="{{ url_for('users.reset_request') }}"> Get help with signing in. </a>
-            </small>
-        </div>
-    </form>
-</div>
-<div class="border-top pt-3">
-    <small class="text-muted">
-        Don't have an account? <a class="ml-2" href="{{ url_for('users.register') }}">Sign Up </a>
-    </small>
-</div>
-</div>
+        </form>
+    </div>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Don't have an account? <a class="ml-2" href="{{ url_for('users.register') }}">Sign Up </a>
+        </small>
+    </div>
 
+</div>
+<div class="container">
+    <p>Please subscribe to get the latest posts.
+        <button onclick="myFunction()" class="btn btn-outline-info btn-lg btn-info">SUBSCRIBE</button>
+        <p id="demo"></p>
+        <script>
+            function myFunction() {
+                document.getElementById("demo").innerHTML =
+                    "Thank you for subscribing to my blog. You are now signed up to our emails.";
+            }
+        </script>
+    </p>
+</div>
 {% endblock %}

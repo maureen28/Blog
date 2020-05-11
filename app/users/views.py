@@ -2,7 +2,7 @@ from flask import Blueprint
 from flask import render_template, url_for, flash, redirect, request
 from flask_login import login_user, current_user, logout_user, login_required
 from app import db, bcrypt
-from app.models import User, Post, Comment
+from app.models import User, Post, Comment, Subscribers
 from app.users.forms import RegistrationForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm
 from app.users.utils import save_picture, send_reset_email
 from ..email import welcome_message, notification_message
@@ -102,7 +102,7 @@ def reset_token(token):
         return redirect(url_for('users.login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
 
-@users.route("/", methods = ["GET", "POST"])
+@users.route("/home", methods = ["GET", "POST"])
 def subscribe():
     
     if request.method == "POST":

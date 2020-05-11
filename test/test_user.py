@@ -5,9 +5,6 @@ class TestUser(unittest.TestCase):
     def setUp(self):
         self.new_user = User(password = 'alcohol')
 
-    def test_password_setter(self):
-        self.assertTrue(self.new_user.password_hash is not None)
-
     def test_instance(self):
         self.assertTrue(isinstance(self.new_user,User))
 
