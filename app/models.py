@@ -39,7 +39,6 @@ class Post(db.Model):
     date_posted = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
     content = db.Column(db.Text, nullable =False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
-    category = db.Column(db.Text, nullable=False)
     comments = db.relationship('Comment', backref='post', lazy=True)
     
     def __repr__(self):
@@ -67,6 +66,10 @@ class Subscribers(db.Model):
     __tablename__ = "subscribers"
     id = db.Column(db.Integer, primary_key = True)
     email = db.Column(db.String(255), unique = True, index = True)
+    
+    def __repr__(self):
+        return f"Subscribers('{self.email}')"
+    
     
 class Quote:
     """

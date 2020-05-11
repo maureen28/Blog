@@ -38,7 +38,7 @@
                 {% else %}
                 <a class="nav-item nav-link" href="{{ url_for('users.login') }}">Log In</a>
                 <a class="nav-item nav-link" href="{{ url_for('users.register') }}">Create New Account</a>
-                <a class="nav-item nav-link" href="{{ url_for('users.subscribe') }}">Subscribe</a>
+                <a class="nav-item nav-link" href="{{ url_for('users.subscribe') }}" role="button">Subscribe</a>
                 
                 {% endif %}
             </div>
@@ -80,7 +80,7 @@
                 </a>
             </li>
         </ul>
-        <p class="copyright text-muted"> © Copyright Nimo </p>
+        <p class="copyright text-center text-muted"> © Copyright: Nimo </p>
 
     </footer>
     <!-- Optional JavaScript -->

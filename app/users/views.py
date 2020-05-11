@@ -20,9 +20,6 @@ def register():
         user = User(username = form.username.data, email = form.email.data , password = hashed_password)
         db.session.add(user)
         db.session.commit()
-        
-        mail_message("Welcome to Pitch","email/welcome_user",user.email,user=user)
-
         flash('Your account has been created! You can now log in', 'success')
         return redirect(url_for('users.login'))
     return render_template('register.html',title='Created a New Account', form =form)
