@@ -16,8 +16,9 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">LifeBlog</a>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">FlaskPitch</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,21 +27,23 @@
         <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
                 <a class="nav-item nav-link" href="{{ url_for('main.home') }}">Home</a>
+                <a class="nav-item nav-link" href="{{ url_for('main.about') }}">About</a>
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
                 {% if current_user.is_authenticated %}
-                <a class="nav-item nav-link" href="{{ url_for('posts.new_post') }}">New Blog Post</a>
+                <a class="nav-item nav-link" href="{{ url_for('posts.new_post') }}">New Pitch</a>
                 <a class="nav-item nav-link" href="{{ url_for('users.account') }}">My Profile</a>
                 <a class="nav-item nav-link" href="{{ url_for('users.logout') }}">Log Out</a>
                 {% else %}
-                <a class="nav-item nav-link" href="{{ url_for('users.login') }}">Login</a>
-                <a class="nav-item nav-link" href="{{ url_for('users.register') }}">Register</a>
+                <a class="nav-item nav-link" href="{{ url_for('users.login') }}">Log In</a>
+                <a class="nav-item nav-link" href="{{ url_for('users.register') }}">Create New Account</a>
+                <a class="nav-item nav-link" href="{{ url_for('users.subscribe') }}">Subscribe</a>
+                
                 {% endif %}
             </div>
         </div>
     </nav>
-
     <main role="main" class="container">
         <div class="row">
             <div class="col-md-8">
@@ -58,14 +61,28 @@
 
         </div>
     </main>
-    <!-- Footer -->
-    <footer class="page-footer font-small unique-color-dark pt-4 bg-steel">
-        <div class="container">
-            <div class="footer-copyright text-center py-3">© 2020 Copyright: Nimo
-            </div>
-            <!-- Copyright -->
+    <footer>
+        <ul class="list-inline text-center">
+            <li class="list-inline-item">
+                <a href="https://www.instagram.com/maureen.murimi/" target="_blank">
+                    <span class="fa-stack fa-lg">
+                        <i class="fas fa-circle fa-stack-2x" aria-hidden="true"></i>
+                        <i class="fab fa-instagram fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                    </span>
+                </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="https://github.com/maureen28" target="_blank">
+                    <span class="fa-stack fa-lg">
+                        <i class="fas fa-circle fa-stack-2x" aria-hidden="true"></i>
+                        <i class="fab fa-github fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                    </span>
+                </a>
+            </li>
+        </ul>
+        <p class="copyright text-muted"> © Copyright Nimo </p>
+
     </footer>
-    <!-- Footer -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

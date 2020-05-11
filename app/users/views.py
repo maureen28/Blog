@@ -5,6 +5,7 @@ from app import db, bcrypt
 from app.models import User, Post, Comment
 from app.users.forms import RegistrationForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm
 from app.users.utils import save_picture, send_reset_email
+from ..email import welcome_message, notification_message
 
 users = Blueprint('users', __name__)
 
@@ -46,7 +47,6 @@ def logout():
     logout_user()
     return redirect(url_for('main.home'))
 
-
 @users.route('/account', methods=['GET','POST'])
 @login_required
 def account():
@@ -58,9 +58,6 @@ def account():
         current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
-        welcome_message("Thank you for subscribing to our Life blog", 
-                        "email/welcome", current_user.email)
-
         flash('Your account has been updated!','success')
         return redirect(url_for('users.account'))
     elif request.method == 'GET':
@@ -107,3 +104,15 @@ def reset_token(token):
         flash('Your password has been updated! Log in to continue', 'success')
         return redirect(url_for('users.login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
+
+@users.route("/", methods = ["GET", "POST"])
+def subscribe():
+    
+    if request.method == "POST":
+        new_sub = Subscribers(email = request.form.get("subscriber"))
+        db.session.add(new_sub)
+        db.session.commit()
+        flash('Thank you for subscribing to our life blog', 'success')
+        welcome_message("Thank you for subscribing to our life blog", 
+                        "email/welcome", new_sub.email)
+    return render_template("home.html")

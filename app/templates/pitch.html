@@ -2,6 +2,7 @@
 
 {% block content %}
 <br><br>
+<header class="masthead" style="background-image: url('https://picsum.photos/1900/1267?grayscale'); margin-top: 40px;"></header>
 <div class="content-section">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
@@ -33,6 +34,7 @@
                 {{ form.content(class="form-control form-control-lg") }}
                 {% endif %}
             </div>
+           
         </fieldset>
         <div class="form-group">
             {{ form.submit(class="btn btn-outline-info") }}

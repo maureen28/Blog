@@ -1,6 +1,6 @@
 body {
+    background-image: url("https://bit.ly/30C8bHA");
     color: black;
-    margin-top: 0;
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Source Sans Pro', sans-serif;
@@ -44,6 +44,11 @@ a.article-title:hover {
     text-decoration: none;
 }
 
+.article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+}
 
 .account-img {
     height: 125px;
@@ -54,4 +59,36 @@ a.article-title:hover {
 
 .account-heading {
     font-size: 2.5rem;
+}
+
+blockquote {
+    border-left: none
+}
+
+.quote-badge {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.quote-box {
+    overflow: hidden;
+    margin-top: -50px;
+    padding-top: -100px;
+    border-radius: 17px;
+    background-color: black;
+    margin-top: 25px;
+    color: white;
+    box-shadow: 2px 2px 2px 2px #E0E0E0;
+}
+
+.quotation-mark {
+    margin-top: -10px;
+    font-weight: bold;
+    font-size: 100px;
+    color: white;
+
+}
+
+.quote-text {
+    font-size: 19px;
+    margin-top: -65px;
 }

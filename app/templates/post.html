@@ -1,6 +1,7 @@
 {% extends 'index.html' %}
 
 {% block content %}
+<br>
 <div class="panel panel-header">
     <article class="media content-section">
         <img class="rounded-circle article-img"
@@ -9,7 +10,7 @@
             <div class="article-metadata">
                 <a class="mr-2" href="#">{{ post.author.username }}</a>
                 <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
-               
+             
                 {% if post.author == current_user %}
                 <div>
                     <a class="btn btn-secondary btn-sm mt-1 mb-1"
@@ -28,7 +29,6 @@
 <div class="content-section">
     <a class="ratings" href="{{ url_for('posts.new_comment', post_id=post.id) }}"> Leave a comment</a>
     <div class="mt-4 mb-4">
-        <h4>Comments</h4>
         {% if comments %}
         {% for comment in comments %}
 
