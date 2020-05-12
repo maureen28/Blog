@@ -29,24 +29,17 @@
 <div class="content-section">
     <a class="ratings" href="{{ url_for('posts.new_comment', post_id=post.id) }}"> Leave a comment</a>
     <div class="mt-4 mb-4">
-        <script>
-            $(document).ready(function(){
-              $("button").click(function(){
-                $(".com").remove();
-              });
-            });
-            </script>
         {% if comments %}
         {% for comment in comments %}
-        <h5 class="com"> {{ comment.comment }} </h5>
-        <button type="button" class="btn btn-warning btn-sm m-1">Delete
+        <h5> {{ comment.comment }} </h5>
+        <button type="button" class="btn btn-warning btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete
             comment</button>
     </div>
     {% endfor %}
     {% else %}
     <p>There are no comments yet</p>
     {% endif %}
-    
+
 </div>
 
 <!-- Modal -->
