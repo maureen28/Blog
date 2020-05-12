@@ -70,5 +70,14 @@ def new_comment(post_id):
         return redirect(url_for('posts.post', post_id=post.id))
     return render_template('comment.html', title='Comment Here', form=form, legend='Comment Here')
 
-
+@posts.route("/post/<int:post_id>/comment/delete", methods=['POST'])
+@login_required
+def delete_comment(post_id):
+    comment = Comment.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
+    db.session.delete(comment)
+    db.session.commit()
+    flash('Your comment has been deleted!', 'success')
+    return redirect(url_for('main.home'))
     

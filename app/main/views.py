@@ -1,5 +1,5 @@
 from flask import render_template, request,Blueprint
-from app.models import Post, Quote
+from app.models import Post, Quote, User, Comment
 from ..requests import get_quote
 
 main = Blueprint('main', __name__)
